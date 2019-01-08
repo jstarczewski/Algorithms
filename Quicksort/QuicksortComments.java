@@ -5,13 +5,12 @@ public class Quicksort {
 
 	//  
 	//   Algorytm sortujacy Quicksort
-	//  	- bardzo popularne 
+	//  	- bardzo popularny 
 	//  	- dziala w miejscu ( wymaga tylko malego stosu do do wywolan rekurencyjnych)
 	//  	- sortuje srednio w czasie N log N wektor dlugosci N
-	//  	- krotka petla wewnetrza (szybkie w teori i na papierze)
+	//  	- krotka petla wewnetrza (szybki w teori i praktyce)
 	//  	- algorytm bardzo wrazliwy (drobne bledy w implementacji rujnuja zlozonosc
 	// 		N log N i sprowadzaja sortowanie do zlozonosci KWADRATOWEJ
-	//  	- 
 	 
 	// quicksort to rekrurencyjna metoda sortowania
 	// zakladajac, ze chcemy sortowac caly wektor to przyjmuje ona jako parametry:
@@ -26,8 +25,8 @@ public class Quicksort {
 		// przeciecie oznacza, ze przeszlismy po calej czesci wektora, ktora nas interesowala
 		if (hi <= lo) 
 			return;
-		// metoda dzielaca, klucz do poprawnego dzialania quicksorta
-		// metoda ta wyznacza taki klucz j, ze
+		// metoda dzielaca, jest kluczowa do poprawnego dzialania quicksorta
+		// metoda ta wyznacza taki klucz (indeks) j, ze
 		// -> element a[j] znajduje sie na ostatnim miejscu tablicy (dla pewnego j)
 		// -> zaden element w przedziale od a[lo] do a[j-1] nie jest wiekszy niz a[j]
 		// -> zaden element w przedziale a[j+1] do a[hi] nie jest mniejszy niz a[j]
@@ -36,7 +35,7 @@ public class Quicksort {
 		quicksort(a, lo, j-1);
 		// wywolanie metody quicksort dla drugiej polowy
 		quicksort(a, j+1, hi);
-		// 
+	
 
 	}
 	// metoda dzielaca
@@ -98,7 +97,7 @@ public class Quicksort {
 		int tmp = a[j];
 		a[j] = tmp;
 		a[lo] = tmp;
-		// po wykonaniu zmian zamieniamy wartos pod kluczem j z arbitralnie wybranym przez nas m
+		// po wykonaniu zmian zamieniamy wartosc pod kluczem j z arbitralnie wybranym przez nas m
 		// po wykonaniu operacji w metodzie split otrzymujemy wektor w ktorym
 		// obrana na poczatku wartosc osiowa m = a[lo] znajduje sie pod odpowiednim kluczem (indeksem), a pozostale
 		// elementy przed m sa mniejsze lub rowne m, a po m sa wieksze lub rowne

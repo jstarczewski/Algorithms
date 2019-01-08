@@ -5,13 +5,12 @@ public class Quicksort {
 
 	//  
 	//   Algorytm sortujacy Quicksort
-	//  	- bardzo popularne 
+	//  	- bardzo popularny 
 	//  	- dziala w miejscu ( wymaga tylko malego stosu do do wywolan rekurencyjnych)
-	//  	- sortuje srednio w czasie N log N wektor dlugosci N
-	//  	- krotka petla wewnetrza (szybkie w teori i na papierze)
+	//  	- sortuje srednio w czasie N log N wektor o dlugosci N
+	//  	- krotka petla wewnetrza (szybkie w teori i praktyce)
 	//  	- algorytm bardzo wrazliwy (drobne bledy w implementacji rujnuja zlozonosc
 	// 		N log N i sprowadzaja sortowanie do zlozonosci KWADRATOWEJ
-	//  	- 
 	 
 
 
@@ -29,50 +28,52 @@ public class Quicksort {
 	//	1. Wlasnosc stopu 
 	//		void quicksort()
 	//    		Dla danych wejsciowych lo i hi reprezentujacych odpowiednio indeks poczatku sortowania
-	//    		i indeks konca wystepuje warunkowa instrukcja warunkowa if wychodzaca z rekurencji w
-	//    		momencie przeciecia sie wartosci indeksow
-	//    		przeciecie nastapi gdy w procesie obierania indeksu j bedacego arbitralnym indeksem 
-	//    		osiowym zostanie ostatni element i wtedy lo == hi
-	//    		void split()
-	//		
+	//    		i indeks konca wystepuje instrukcja warunkowa if wychodzaca z rekurencji w
+	//    		momencie przeciecia sie wartosci indeksow.
+	//    		Przeciecie nastapi gdy w procesie obierania indeksu j bedacego arbitralnym indeksem 
+	//    		osiowym zostana ostatnie dwa nieposortowane elementy i po ich przesunieciu lo == hi.
 	//		Opuszczenie rekurencji jest zapewnione dla wszystkich elementow osiowych niezaleznie czy
-	//		jest to element najmiejszy czy najwiekszy
+	//		jest to element najmiejszy czy najwiekszy.
 	//
+	//    		void split()
 	//    		W metodzie split glowna petla while(true) zostanie opuszczona w momencie gdy
 	//    		gdy schodzace sie do siebie indeksy i,j sie przetna (przed ostateczna zamiana)
 	//    		
-	//    		Pierwasza mniejsza petla dziala dopoki nie znajdziemy (szukajac od lewej) wartosci
+	//    		Pierwasza mniejsza petla while dziala dopoki nie znajdziemy (szukajac od lewej) wartosci
 	//    		mniejszej niz wartosc osiowa m, gdy jej nie znajdziemy i indeks dojdzie do wartosci
-	//    		maksymalnej (hi) to instrukcja warunkowa opuszcza petle
+	//    		maksymalnej (hi) to instrukcja warunkowa if opuszcza petle.
 	//	
-	//		Druga mniejsza petla dziala analogicznie do pierwszej, petla zostanie opuszczona gdy 
-	//		zostanie znaleizona wartosc wieksza niz osiowa, lub w momencie osiagniecia minimalnej
-	//		wartosci (lo) przez j, instrukcja warunkowa opuszcza petle
+	//		Druga mniejsza petla while dziala analogicznie do pierwszej, petla zostanie opuszczona
+	//		gdy zostanie znaleizona wartosc wieksza niz wartosc osiowa m,
+	//		lub w momencie osiagniecia przez zmienna j minimalnej wartosci (lo),
+	//		wtedy instrukcja warunkowa opuszcza petle.
 	//		
-	//		wszystkie petle dla poprawnych danych wejsciowych sa obslugiwane w sposób
-	//		poprwany, nie wystepuje mazanie po pamieci i wychodzenie poza indeksy, petle sie koncza
-	//		wzieto pod uwage, ze tablica moze zawierac inne elementy o wartosci klucza takiej samej
-	//		jak w elemencie osiowym
+	//		Wszystkie petle dla poprawnych danych wejsciowych sa obslugiwane w sposób
+	//		poprwany, nie wystepuje mazanie po pamieci i wychodzenie poza indeksy, petle sie koncza.
+	//		Wzieto pod uwage, ze tablica moze zawierac inne elementy o wartosci klucza takiej samej
+	//		jak w elemencie osiowym.
 	//
 	//	2. Wlasnosci okreslonosci
 	//
 	//  		Operacje niebezpieczne jakie moga wystapic podczas dzialania qsorta to indeksowanie
 	//  		tablic w sposob prowadzacy do wystapienia mazania po pamieci (wyjscia poza granice)
 	//
-	//		Obranie elementu osiowego jako najmniejszego(lub najwiekszego) jest zabezpieczone
-	//		przez to, ze element osiowy znajduje sie w miejscu a[lo] i nie jest mniejszy niz on sam
+	//		Obranie elementu osiowego jako najmniejszego (lub w przypadku innej
+	//		implenemtacji jako najwiekszego) jest zabezpieczone przez to, ze element osiowy
+	//		znajduje sie w miejscu a[lo] i nie jest mniejszy niz on sam.
 	//		Dzieki temu zabezpieczeniu mamy pewnosc ze dla poprawnych danych nie wystapi
-	//		wyjscie wskaznikow poza lewy i prawy koniec tablicy
+	//		wyjscie wskaznikow poza lewy i prawy koniec tablicy (podtablicy).
 	//
 	//	3. Wlasnosc czesciowej poprawnosci
 	//		
 	//		Tablica wynikowa jest posortowana bo rekurencyjne dzielenie zachodzi do momentu
-	//		otrzymania dwuelementowej podtablicy a proces podzialu zawsze umieszcza jeden element
-	//		na ostatecznej pozycji, zakladajac poprawna implementacje, jesli lewa i prawa
+	//		otrzymania dwuelementowej podtablicy (niepodzielnej), a proces podzialu
+	//		zawsze umieszcza jeden element na jego ostatecznej pozycji,
+	//		zakladajac poprawna implementacje, jesli lewa i prawa
 	//		podtablica sa poprawnie posortowane to wynikowa tablica
 	//		skladajaca sie z lewej podtablicy (uporzadkowanej i bez elementow wiekszych niz osiowy),
 	//		elementu osiowego i prawej podtablicy (uporzadkowanej i bez elementow mniejszych niz 
-	//		osiowy) to równiez jest posortowana (tablica wynikowa). 
+	//		osiowy) równiez jest posortowana (tablica wynikowa). 
 	//
 	//
 	
