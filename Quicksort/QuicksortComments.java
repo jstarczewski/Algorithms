@@ -3,17 +3,16 @@ import java.lang.System;
 
 public class Quicksort {
 
-	/**
-	 * Algorytm sortujacy Quicksort
-	 *	- bardzo popularne 
-	 *	- dziala w miejscu ( wymaga tylko malego stosu do do wywolan rekurencyjnych)
-	 *	- sortuje srednio w czasie N log N wektor dlugosci N
-	 *	- krotka petla wewnetrza (szybkie w teori i na papierze)
-	 *	- algorytm bardzo wrazliwy (drobne bledy w implementacji rujnuja zlozonosc
-	 *		N log N i sprowadzaja sortowanie do zlozonosci KWADRATOWEJ
-	 *	- 
-	 * */
-
+	//  
+	//   Algorytm sortujacy Quicksort
+	//  	- bardzo popularne 
+	//  	- dziala w miejscu ( wymaga tylko malego stosu do do wywolan rekurencyjnych)
+	//  	- sortuje srednio w czasie N log N wektor dlugosci N
+	//  	- krotka petla wewnetrza (szybkie w teori i na papierze)
+	//  	- algorytm bardzo wrazliwy (drobne bledy w implementacji rujnuja zlozonosc
+	// 		N log N i sprowadzaja sortowanie do zlozonosci KWADRATOWEJ
+	//  	- 
+	 
 	// quicksort to rekrurencyjna metoda sortowania
 	// zakladajac, ze chcemy sortowac caly wektor to przyjmuje ona jako parametry:
 	// wektor a,
@@ -45,26 +44,26 @@ public class Quicksort {
 		int i = lo;
 		int j = hi;
 		
-		/**
-		 * [    ----array-----  ]		 
-		 *
-		 *
-		 * Przed 
-		 * [m][ ----array---- ][]
-		 * (lo) 	     (hi)
-		 *
-		 *
-		 *
-		 * W trakcie
-		 * [m][ <=m ][||][ >=m][]
-		 * (lo)    (i)  (j)  (hi)
-		 *
-		 *
-		 *
- 		 * Po
-		 * [  <=m  ][m][  >=m   ]
-		 * (lo)     (j)      (hi)
-		 * */
+		// 
+		//   [    ----array-----  ]		 
+		//  
+		// 
+		//   Przed 
+		//   [m][ ----array---- ][]
+		//   (lo) 	     (hi)
+		//  
+		//  
+		//  
+		//   W trakcie
+		//   [m][ <=m ][||][ >=m][]
+		//   (lo)    (i)  (j)  (hi)
+		//  
+		//  
+		//  
+ 		//   Po
+		//   [  <=m  ][m][  >=m   ]
+		//   (lo)     (j)      (hi)
+		    
 
 		// arbitralnie wybieramy a[lo] jako element osiowy ktory na koniec sortowania
 		// znajdzie sie na swojej ostatecznej pozycji
