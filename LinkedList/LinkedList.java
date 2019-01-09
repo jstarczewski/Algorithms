@@ -1,9 +1,11 @@
-
+// generyczna lista liniowa
 public class LinkedList<T> {
 
     private Node<T> first;
     private Node<T> last;
 
+    // anonimowa klasa Node implementowana na wzor tej znajdujacej sie w bibliotece standardowej
+    // Javy w implementacji listy liniwoej
     private static class Node<T> {
 
         T item;
@@ -19,6 +21,9 @@ public class LinkedList<T> {
 
     public LinkedList() {}
 
+    // sygnatury metod sa raczej tak zdefiniowane ze mozna sie domyslec
+   
+    // iteracyjne dodwanie elementu na koniec listy
     public void addLast(T item) {
         if (first == null) {
             first = new Node<T>(null, item, null);
@@ -31,7 +36,7 @@ public class LinkedList<T> {
             last = current.next;
         }
     }
-
+    // rekurencyjne dodawanie elementu na koniec listy
     public void addLastRec(T item) {
         if (first != null)
             addLastRec(item, first);

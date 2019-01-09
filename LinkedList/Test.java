@@ -36,6 +36,10 @@ public class Test {
 
 		// Wyszukiwanie (sprawdzanie czy jest element w liscie)
 		System.out.println(l.contains(12) + " ; " + l.contains(148));
+		
+
+
+		
 
 	}
 
