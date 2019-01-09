@@ -1,25 +1,14 @@
 public class Heap {
-    int[] table;
-    int size;
-
-    public Heap(int heapSize) {
-        this.table = new int[heapSize+1];
-        this.size = 0;
-    }
-
-    public void add(int in) {
-	if(this.size >= this.table.length) return;
-	this.table[++size] = in;
-	int position = this.size;
-	while( (position / 2) > 0 && this.table[position / 2] < in){
-		int temp = this.table[position/2];
-		this.table[position/2] = in;
-		this.table[position] = temp;
-		position /= 2;
-
+    public static void heapUp(int[] heap, int n) {
+	int position = n;
+	while( (position / 2) > 0 && heap[position / 2] < heap[position] ){
+            int temp = heap[position/2];
+	    heap[position/2] = heap[position];
+	    heap[position] = temp;
+	    position /= 2;
 	}
-    }
-
+}
+/*
     public int delete(int out) {
         int ret = table[out];   //return value
         int biggerGame = 0;     //zmienna przechowujaca indeks wiekszego dziecka
@@ -46,24 +35,21 @@ public class Heap {
         }
         return ret;     //zwrot usunietej wartosci
     }
-
-    public int[] getTable() { return this.table; }
-
+*/
     public static void main(String[] args) {
-	    Heap h = new Heap(6);
-	    h.add(2);
-	    h.add(1);
-	    h.add(4);
-	    h.add(3);
-	    h.add(5);
-	    h.add(2);
-	    h.delete(1);
-
-	    int [] tab = h.getTable();
-
-	    System.out.println(String.format("Root: %d, Child1: %d, Child2: %d, Child11: %d, Child12: %d, Child21: %d",
-				    tab[1], tab[2], tab[3], tab[4], tab[5], tab[6]));
-
-
+	int [] heap = new int[7];
+	heap[1] = 1;
+	heap[2] = 2;
+	heapUp(heap, 2);
+	heap[3] = 1;
+	heapUp(heap, 3);
+	heap[4] = 4;
+	heapUp(heap, 4);
+	heap[5] = 3;
+	heapUp(heap, 5);
+	heap[6] = 5;
+	heapUp(heap, 6);
+        System.out.println(String.format("Root: %d, Child1: %d, Child2: %d, Child11: %d, Child12: %d, Child21: %d",
+				    heap[1], heap[2], heap[3], heap[4], heap[5], heap[6]));
     }
 }
