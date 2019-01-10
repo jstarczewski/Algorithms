@@ -1,11 +1,13 @@
 public class InsertSort {
+
     public static void insertSort(int[] a) {
-        int swap;
+
+        int tmp;
         for (int i = 1; i < a.length; i++)
             for (int j = i; j > 0 && a[j] < a[j - 1]; j--) {
-                swap = a[j];
+                tmp = a[j];
                 a[j] = a[j - 1];
-                a[j - 1] = swap;
+                a[j - 1] = tmp;
             }
         /*
         Dowód:
@@ -35,13 +37,12 @@ public class InsertSort {
 
             3.Własność częściowej poprawności
                 Tablica wynikowa jest posortowana, ponieważ dla każdego elementu zaczynając od indeksu 1. Wkładamy i-ty
-                element do posortowanego podciągu poprzez swap'owanie. 1-elementowy zbior jest zawsze posortowany, a
+                element do posortowanego podciągu poprzez tmp'owanie. 1-elementowy zbior jest zawsze posortowany, a
                 każdy następny jest przesuwany na pozycje w której jest wiekszy od indeksu wyzej i mniejszy od indeksu
                 nizej.
 
          */
     }
-
 
     public static void main(String[] args) {
 
