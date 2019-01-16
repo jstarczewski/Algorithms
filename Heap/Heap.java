@@ -1,61 +1,86 @@
 public class Heap {
-    public static void heapUp(int[] heap, int n) {
-	int position = n;
+	private int[] heap;
+	private int size;
+	private int end = 0;
+
+	Heap(int size) {
+		this.heap = new int[size];
+		this.size = size;
+	}
+
+	public void add(int value) {
+		this.heap[++end] = value;
+		heapUp(end);
+	}
+
+    public void heapUp(int index) {
+	int position = index;
 	while( (position / 2) > 0 && heap[position / 2] < heap[position] ){
             int temp = heap[position/2];
 	    heap[position/2] = heap[position];
 	    heap[position] = temp;
 	    position /= 2;
+		}
 	}
-}
 
-    public static int delete(int[] heap,int size, int out) {
-		if(out == size)			//gdy chcemy usunac ostatni element
-			return size--;
-        int ret = heap[out];   //jesli mamy strukture to mozemy zwrocic usuniety element
-        int biggerGame = 0;     //zmienna przechowujaca indeks wiekszego dziecka
-        int swap;               //zmienna do swap'owania
-        heap[out] = heap[size--];     //w puste miejsce wrzucamy ostatni element kopca
-        if (out == 1 || heap[out / 2] > heap[out]) {      //sprawdzamy czy bedziemy "sortowac" w gore lub w dol
-            while ((out * 2 <= size) && heap[out] < heap[out * 2] || (out * 2 + 1 <= size) && heap[out] < heap[out * 2 + 1]) {      //sortujemy w dol tak dlugo az nie bedzie dzieci lub dzieci sa mniejsze od wstawionego elementu
-                if (out * 2 + 1 <= size)    //jesli istnieje 2 dzieci to sprawdzamy ktory wiekszy
-                    biggerGame = heap[out * 2 + 1] >= heap[out * 2] ? out * 2 + 1 : out * 2;  //instrukcja warunkowa uzyskujaca indeks wiekszego dziecka
-                swap = heap[biggerGame];   //swapujemy wieksze dziecko z wstawionym elementem
-                heap[biggerGame]=heap[out];
-                heap[out]=swap;
-                out=biggerGame;     //zmieniamy indeks na miejsce dziecka z ktorym sie zamienilismy
-            }
-
-        } else {    //sortowanie w gore
-            while (out != 1 && heap[out] > heap[out / 2]) {   //jesli ojciec wiekszy od elementu wstawionego to zamieniamy
-                swap = heap[out];
-                heap[out] = heap[out / 2];
-                heap[out / 2] = swap;
-                out /= 2;       //przechodzimy pod indeks ojca
-            }
-
+    public boolean delete(int index) {
+        if(index > this.end || index < 1) return false;
+        if(index == this.end) {
+            end--;
+            return true;
         }
-        return size;     //zwraca nowy rozmiar
+        this.heap[index] = this.heap[this.end]; 
+        size--;
+        heapUp(index);
+        return true;
+
+    private void heapDown(int index) {
+        int child = 2 * index;
+        while(child < this.end){
+            if(child + 1 > this.end && this.heap[child + 1] > this.heap[child])
+                child++;
+            if(this.heap[child] <= this.heap[index]) return;
+            int tmp = heap[child];
+            heap[child] = heap[index];
+            heap[index] = tmp
+            index = child;
+            child = index * 2;
+        }
     }
 
-    public static void main(String[] args) {
-	int [] heap = new int[7];
-	heap[1] = 1;
-	heap[2] = 2;
-	heapUp(heap, 2);
-	heap[3] = 6;
-	heapUp(heap, 3);
-	heap[4] = 4;
-	heapUp(heap, 4);
-	heap[5] = 10;
-	heapUp(heap, 5);
-	heap[6] = 5;
-	heapUp(heap, 6);
-        System.out.println(String.format("Root: %d, Child1: %d, Child2: %d, Child11: %d, Child12: %d, Child21: %d",
-				    heap[1], heap[2], heap[3], heap[4], heap[5], heap[6]));
+    public static void Sort(int[] v) {
+        BuildHeap(v, v.length
+        for (int i = v.length - 1; i > 0; i--)
+        {
+            Swap(v, 0, i);
+            ShiftDown(v, i, 0);
+        }
+    }
 
-     delete(heap,6, 1);
-		System.out.println(String.format("Root: %d, Child1: %d, Child2: %d, Child11: %d, Child12: %d, Child21: %d",
-				heap[1], heap[2], heap[3], heap[4], heap[5], heap[6]));
+    private static void BuildHeap(int[] v, int n) {
+        for (int i = n / 2; i >= 0; i--)
+            ShiftDown(v, n, i);
+
+    }
+
+    private static void Swap(int[] v, int i, int j) {
+        int temp = v[i];
+        v[i] = v[j];
+        v[j] = temp;
+    }
+
+    public static void main(String [] args) throws InterruptedException {
+        Random r = new Random();
+        int n = 50;
+        int max = 100;
+        int [] v = new int [n];
+        for(int i = 0; i < n; i++){
+            v[i] = r.nextInt() % max;
+        }
+        Sort(v);
+        for(int x : v)
+            System.out.print(x + ", ");
     }
 }
+
+
