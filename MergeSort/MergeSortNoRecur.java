@@ -1,13 +1,13 @@
-import java.util.Random
+import java.util.Random;
 
-public class MergeSort
+public class MergeSortNoRecur
 {
     private static int[] extra;
     private static int[] main;
 
     public static void Sort(int[] v, int n)
     {
-        int[] temp = new int[n];
+        int[] temp;
         extra = new int[n];
         main = v;
         int i;
