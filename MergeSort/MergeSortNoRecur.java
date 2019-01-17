@@ -22,7 +22,7 @@ public class MergeSortNoRecur
             main = extra;
             extra = temp;
         }
-        if (main != v) //jezeli zamienilismy petle extra z main nieparzysta ilosc razy
+        if (main != v) //jezeli zamienilismy podtablice extra z main nieparzysta ilosc razy
             for (i = 0; i < n; i++)
                 v[i] = main[i];
 
