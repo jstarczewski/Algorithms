@@ -1,4 +1,4 @@
-import java.util. ;
+import java.util.*;
 import java.lang.System;
 
 public class Quicksort {
@@ -14,7 +14,7 @@ public class Quicksort {
 
 	private static int split(int[] a, int lo, int hi) {
 		int i = lo;
-		int j = hi;
+		int j = hi + 1;
 		int m = a[lo];
 		while(true) {
 			 while(a[++i] < m) 
@@ -27,23 +27,23 @@ public class Quicksort {
 				 break;
 			 int tmp = a[j];
 			 a[j]  = a[i];
-			 a[j] = tmp;
+			 a[i] = tmp;
 		}
 		int tmp = a[j];
-		a[j] = tmp;
+		a[j] = a[lo];
 		a[lo] = tmp;
 		return j;
 	}
 
 	public static void main(String[] args) {
-		int[] testArray = new int[1000000];
-		int[] testArrayJavaSort = new int[1000000];
+		int[] testArray = new int[10];
+		int[] testArrayJavaSort = new int[10];
 
 		Random r = new Random();
-		for (int i = 0; i < 1000000; i++) {
-			testArray[i] = r.nextInt(10000000);
-			testArrayJavaSort[i] = r.nextInt(10000000);
-			//System.out.print(testArray[i]);
+		for (int i = 0; i < 10; i++) {
+			testArray[i] = r.nextInt(100);
+			testArrayJavaSort[i] = r.nextInt(100);
+			System.out.print(testArray[i]+ " ");
 		}
 		long start = System.currentTimeMillis();
 		quicksort(testArray, 0, testArray.length-1);
@@ -55,8 +55,8 @@ public class Quicksort {
 		end = System.currentTimeMillis() - start;
 		System.out.println("Time of sorting = " + end);
 		
-		//for (int i = 0; i < 10; i++) 
-		//	System.out.print(testArray[i] + " ");
+		for (int i = 0; i < 10; i++) 
+			System.out.print(testArray[i] + " ");
 	}
 
 }
