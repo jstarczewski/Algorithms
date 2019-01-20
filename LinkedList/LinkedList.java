@@ -97,9 +97,7 @@ public class LinkedList<T> {
         Node<T> f = first;
         Node<T> newFirst = new Node(null, item, first);
         first = newFirst;
-        if (f == null)
-            first = newFirst;
-        else
+        if (f != null)         
             f.previous = newFirst;
     }
 
